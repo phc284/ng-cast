@@ -10,5 +10,9 @@ angular.module('video-player')
       this.currentVideo = this.videos[index];
     }.bind(this);
     // this.onClick = this.onClick.bind(this);
+
+    this.search = function (query) {
+      console.log(query);
+    }.bind(this);
   }
 });
