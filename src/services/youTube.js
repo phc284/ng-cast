@@ -1,7 +1,7 @@
 angular.module('video-player')
-.service('youTube', function(){
+.service('youTube', function() {
 
-  this.search = function(query){
+  this.search = function(query) {
   };
 
   // return {};
