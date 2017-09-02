@@ -13,10 +13,16 @@ angular.module('video-player')
         this.currentVideo = this.videos[index];
       }.bind(this);
 
-      this.search = function (query) {
+      this.search = function (query, callback) {
         //console.log(query);
-        youTube.search(query);
+        youTube.search(query, callback);
       }.bind(this);
+
+      this.callback = function (videos) {
+        this.videos = videos;
+        this.currentVideo = videos[0];
+      }.bind(this);
+
 
 
       // $scope.data = youTube.data();
