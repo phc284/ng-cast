@@ -1,33 +1,51 @@
 angular.module('video-player')
+  //create component in module
   .component('app', {
     templateUrl: 'src/templates/app.html',
 
-    controller: function(youTube) {
+    //create controller inside component
+    controller: function(youTube, $window) {
+      // //don't need these if we use updateVideo function
+      // //set default video collection
+      // this.videos = exampleVideoData;
+      // //set default first video in player
+      // this.currentVideo = this.videos[0];
 
-      console.log(youTube);
-      // this.videos = youTube($http)
-      this.videos = exampleVideoData;
-      this.currentVideo = this.videos[0];
+      //function to change video in player
+      // this.onClick = function(index) {
+      //   this.currentVideo = this.videos[index];
+      // }.bind(this);
 
-      this.onClick = function(index) {
+      //arrow functions bind to this scope
+      this.onClick = (index) => {
         this.currentVideo = this.videos[index];
-      }.bind(this);
+      };
 
-      this.search = function (query, callback) {
-        //console.log(query);
-        youTube.search(query, callback);
-      }.bind(this);
+      //function to search youtube
+      // this.search = function (query, callback) {
+      //   youTube.search(query, callback);
+      // }.bind(this);
 
-      this.callback = function (videos) {
+      //arrow functions bind to this scope
+      //Way 1: Comment out if doing Way 2
+      // this.search = (query, callback) => {
+      //   youTube.search(query, callback);
+      // };
+
+      //change state when search
+      // this.updateVideo = function (videos) {
+      //   this.videos = videos;
+      //   this.currentVideo = videos[0];
+      // }.bind(this);
+
+
+      this.updateVideo = (videos) => {
         this.videos = videos;
         this.currentVideo = videos[0];
-      }.bind(this);
+      };
 
-
-
-      // $scope.data = youTube.data();
-
-
+      //change starting videos
+      youTube.search('asdf', this.updateVideo);
 
     }
   });

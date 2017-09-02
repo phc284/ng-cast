@@ -1,6 +1,6 @@
 <li ng-videoListEntry class="video-list-entry media">
   <div class="media-left">
-    <img class="media-object" src={{$ctrl.video.snippet.thumbnails.default.url}} />
+    <img class="media-object" ng-src={{$ctrl.video.snippet.thumbnails.default.url}} />
   </div>
   <div class="media-body">
     <div ng-click="$ctrl.clickHandler($ctrl.index)" class="video-list-entry-title">{{$ctrl.video.snippet.title}}</div>
